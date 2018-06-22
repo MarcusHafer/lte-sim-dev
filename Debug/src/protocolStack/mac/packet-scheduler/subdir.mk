@@ -16,6 +16,7 @@ CPP_SRCS += \
 ../src/protocolStack/mac/packet-scheduler/mt-uplink-packet-scheduler.cpp \
 ../src/protocolStack/mac/packet-scheduler/mw-rule-downlink-packet-scheduler.cpp \
 ../src/protocolStack/mac/packet-scheduler/packet-scheduler.cpp \
+../src/protocolStack/mac/packet-scheduler/payda_dl.cpp \
 ../src/protocolStack/mac/packet-scheduler/roundrobin-uplink-packet-scheduler.cpp \
 ../src/protocolStack/mac/packet-scheduler/uplink-packet-scheduler.cpp 
 
@@ -32,6 +33,7 @@ OBJS += \
 ./src/protocolStack/mac/packet-scheduler/mt-uplink-packet-scheduler.o \
 ./src/protocolStack/mac/packet-scheduler/mw-rule-downlink-packet-scheduler.o \
 ./src/protocolStack/mac/packet-scheduler/packet-scheduler.o \
+./src/protocolStack/mac/packet-scheduler/payda_dl.o \
 ./src/protocolStack/mac/packet-scheduler/roundrobin-uplink-packet-scheduler.o \
 ./src/protocolStack/mac/packet-scheduler/uplink-packet-scheduler.o 
 
@@ -48,6 +50,7 @@ CPP_DEPS += \
 ./src/protocolStack/mac/packet-scheduler/mt-uplink-packet-scheduler.d \
 ./src/protocolStack/mac/packet-scheduler/mw-rule-downlink-packet-scheduler.d \
 ./src/protocolStack/mac/packet-scheduler/packet-scheduler.d \
+./src/protocolStack/mac/packet-scheduler/payda_dl.d \
 ./src/protocolStack/mac/packet-scheduler/roundrobin-uplink-packet-scheduler.d \
 ./src/protocolStack/mac/packet-scheduler/uplink-packet-scheduler.d 
 
@@ -56,7 +59,7 @@ CPP_DEPS += \
 src/protocolStack/mac/packet-scheduler/%.o: ../src/protocolStack/mac/packet-scheduler/%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C++ Compiler'
-	g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

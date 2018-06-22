@@ -36,6 +36,7 @@
 #include "../protocolStack/mac/packet-scheduler/roundrobin-uplink-packet-scheduler.h"
 #include "../phy/enb-lte-phy.h"
 #include "../core/spectrum/bandwidth-manager.h"
+#include "../protocolStack/mac/packet-scheduler/payda_dl.h"
 #include "../protocolStack/packet/packet-burst.h"
 
 ENodeB::ENodeB ()
@@ -182,7 +183,7 @@ ENodeB::GetUserEquipmentRecord (int idUE)
 		  return record;
 		}
 	}
-  return false;
+//  return false;
 }
 
 
@@ -339,6 +340,14 @@ ENodeB::SetDLScheduler (ENodeB::DLSchedulerType type)
       	scheduler->SetMacEntity (mac);
       	mac->SetDownlinkPacketScheduler (scheduler);
 		  break;
+
+      case ENodeB::DLScheduler_PAYDA:
+	    scheduler = new PayDA_DL();
+	    scheduler->SetMacEntity (mac);
+    	mac->SetDownlinkPacketScheduler (scheduler);
+//    	cout << "PAYDA DL SCHEDULER" << std::endl;
+    	break;
+
 
 	  default:
 	    std::cout << "ERROR: invalid scheduler type" << std::endl;

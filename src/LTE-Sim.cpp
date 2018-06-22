@@ -51,13 +51,15 @@
 #include "TEST/test-uplink-fme.h"
 #include "TEST/test-uplink-channel-quality.h"
 
-
 #include "utility/help.h"
 #include <iostream>
 #include <queue>
 #include <fstream>
 #include <stdlib.h>
 #include <cstring>
+
+#include "scenarios/heterogeneous-payda.h"
+#include "scenarios/homogeneous-payda.h"
 
 int
 main (int argc, char *argv[])
@@ -86,13 +88,6 @@ main (int argc, char *argv[])
 	    {
 		  Simple ();
 	    }
-
-
-
-
-
-
-
 
 
       /* Run more complex scenarios */
@@ -295,5 +290,33 @@ main (int argc, char *argv[])
 		{
 		  TestUplinkChannelQuality ();
 		}
+
+	  if (strcmp(argv[1], "heterogeneous_payda")==0)
+	  {
+		  cout << "heterogeneous_payda" << std::endl;
+		  if (argc == 3)
+		  {
+			  cout << "Interferer " << atoi(argv[2]) << std::endl;
+			  Heterogeneous_PayDA_Scenario(atoi(argv[2]));
+		  }
+		  else
+		  {
+			  Heterogeneous_PayDA_Scenario(1);
+		  }
+	  }
+
+	  if (strcmp(argv[1], "homogeneous_payda")==0)
+	  {
+		  cout << "homogeneous_payda" << std::endl;
+		  if (argc == 3)
+		  {
+			  cout << "Interferer " << atoi(argv[2]) << std::endl;
+			  Homogeneous_PayDA_Scenario(atoi(argv[2]));
+		  }
+		  else
+		  {
+			  Homogeneous_PayDA_Scenario(1);
+		  }
+	  }
     }
 }
